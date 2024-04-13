@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="timeconverter.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</head>
+
+
+
+<body>
+    <div class="time-converter">
+        <h1 class="main-heading pt-5 ml-5">Time <br>Converter</h1>
+        <p class="description ml-5">Enter hours and minutes values to convert into seconds</p>
+
+        <label class="hours-label ml-5" for="hoursInput">Hours*</label>
+        <input id="hoursInput" type="text" class="form-control ml-5 mb-4" />
+
+        <label class="hours-label ml-5" for="minutesInput">Minutes*</label>
+        <input id="minutesInput" type="text" class="form-control ml-5 mb-4" />
+        <button id="convertBtn" class="btn btn-light ml-5">Convert to Seconds</button>
+        <p id="errorMsg"></p>
+        <p id="timeInSeconds" class="time-in-seconds ml-5 d-none"></p>
+
+
+    </div>
+    <script>
+        let hoursInputEl=document.getElementById("hoursInput");
+        let minutesInputEl=document.getElementById("minutesInput");
+        let convertBtnEl=document.getElementById("convertBtn");
+        let errorMsgEl=document.getElementById("errorMsg");
+        let timeinsecEl=document.getElementById("timeInSeconds");
+
+
+       convertBtnEl.addEventListener("click",function(){
+        let hoursInputValue=hoursInputEl.value;
+        let minutesInputValue=minutesInputEl.value;
+
+        if (hoursInputValue===""){
+            errorMsgEl.textContent="Please Enter a valid number of hours";
+
+        }
+        else if(minutesInputValue===""){
+            errorMsgEl.textContent="Please Enter a valid number of minuates";
+        }
+        else{
+            let timeinsecValue=(parseInt((hoursInputValue)*3600)+parseInt((minutesInputValue)*60));
+            timeinsecEl.textContent=timeinsecValue+"  seconds";
+            timeinsecEl.classList.remove("d-none");
+        }
+
+
+
+       });
+        
+
+
+    </script>
+</body>
+
+</html>
